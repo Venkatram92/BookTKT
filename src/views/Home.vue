@@ -1,18 +1,56 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Steps :model="items" />
+    <router-view
+      :formData="formObject"
+      @prevPage="prevPage($event)"
+      @nextPage="nextPage($event)"
+      @complete="complete"
+    >
+    </router-view>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import Steps from "primevue/steps";
 export default {
-  name: "Home",
+  data() {
+    return {
+      items: [
+        { label: "Personal", to: "/" },
+        { label: "Seat", to: "/seat" },
+        { label: "Payment", to: "/payment" },
+        { label: "Confirmation", to: "/confirmation" }
+      ],
+      formObject: {}
+    };
+  },
   components: {
-    HelloWorld
+    Steps
+  },
+  methods: {
+    nextPage(event) {
+      this.formObject = { ...event.formData, ...this.formObject };
+      this.$router.push(this.items[event.pageIndex + 1].to);
+    },
+    prevPage(event) {
+      if (event.refreshData) {
+        this.formObject = {};
+      }
+      this.$router.push(this.items[event.pageIndex - 1].to);
+    },
+    complete() {
+      this.$toast.add({
+        severity: "success",
+        summary: "Order submitted",
+        detail:
+          "Dear, " +
+          this.formObject.firstname +
+          " " +
+          this.formObject.lastname +
+          " your order completed."
+      });
+    }
   }
 };
 </script>
