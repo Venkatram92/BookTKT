@@ -1,4 +1,4 @@
-# tkt-booking-app
+# Book-TKT-app
 
 
 ## :page_with_curl: Prerequisites
