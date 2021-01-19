@@ -1,6 +1,6 @@
 # Ticket booking app
 
-![BookingSteps](https://github.com/Venkatram92/BookTKT/blob/master/BookingSteps.JPG)
+![BookingSteps](https://github.com/Venkatram92/BookTKT/blob/main/BookingSteps.JPG)
 
 ## :page_with_curl: Prerequisites
 
