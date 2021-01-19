@@ -1,4 +1,4 @@
-# Ticket booking app
+# Ticket booking steps
 
 ![BookingSteps](https://github.com/Venkatram92/BookTKT/blob/main/BookingSteps.JPG)
 
